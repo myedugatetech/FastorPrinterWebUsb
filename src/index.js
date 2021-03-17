@@ -8,7 +8,7 @@ class FastorPrinterSdk extends EscPosEncoder {
     }
     initialize() {
         super.initialize();
-        this.printer.selectPrinter();
+        await this.printer.selectPrinter();
     }
     async print() {
         this.data = super.raw(['\x0a']).encode();
@@ -16,7 +16,7 @@ class FastorPrinterSdk extends EscPosEncoder {
         await this.printer.open(console.log);
         await this.printer.write(this.data, console.log)
     }
-    printNonDineIn(printerName, order, note) {
+    async printNonDineIn(printerName, order, note) {
         
         super.initialize(printerName)
         super.align('center')
@@ -83,8 +83,8 @@ class FastorPrinterSdk extends EscPosEncoder {
             .line('Powered by Fastor')
             .line('Note:')
             .line(note)
-
-        this.print();
+        await this.initialize()
+        await this.print();
     }
     close() {
         return this.printer.close()
