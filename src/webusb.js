@@ -72,5 +72,6 @@ class WebUSB {
         return this.device.close();
     }
 }
-}
+
+
 module.exports = WebUSB;
