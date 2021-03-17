@@ -82,7 +82,8 @@ class FastorPrinterSdk extends EscPosEncoder {
             .line('Powered by Fastor')
             .line('Note:')
             .line(note)
-            .print()
+
+        this.print();
     }
     close() {
         return this.printer.close()
