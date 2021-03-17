@@ -3,6 +3,7 @@ const EscPosEncoder = require('esc-pos-encoder');
 
 class FastorPrinterSdk extends EscPosEncoder {
     constructor() {
+        super();
         this.printer = new WebUSB();
     }
     initialize() {
