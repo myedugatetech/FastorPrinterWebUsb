@@ -6,7 +6,7 @@ class FastorPrinterSdk extends EscPosEncoder {
         super();
         this.printer = new WebUSB();
     }
-    initialize() {
+    async initialize() {
         super.initialize();
         await this.printer.selectPrinter();
     }
