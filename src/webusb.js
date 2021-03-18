@@ -19,6 +19,9 @@ class WebUSB {
             const printerFilters = [{ classCode: 0x07 }];
             this.device = await navigator.usb.requestDevice({ filters: printerFilters });
         }
+        if(!this.device){
+            throw new Error('PRINTER NOT FOUND')
+        }
     }
 
     async open(callback) {
