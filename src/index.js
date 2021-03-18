@@ -19,15 +19,13 @@ class FastorPrinterSdk extends EscPosEncoder {
     }
 
     dashLine() {
-        super.line(Array(this.width).fill("-").join(""));
-        return this
+        return super.line(Array(this.width).fill("-").join(""));
     }
 
     table(leftText, rightText) {
         let space = this.width - (leftText.length + rightText.length);
         space = space > 0 ? space : 0
-        super.line(leftText + Array(space).fill(" ").join("") + rightText);
-        return this
+        return super.line(leftText + Array(space).fill(" ").join("") + rightText);
     }
 
     close() {
