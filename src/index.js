@@ -1,11 +1,17 @@
 const WebUSB = require('./webusb');
 const EscPosEncoder = require('esc-pos-encoder');
 
+let predefinedPrinters = {
+    "58": 32,
+    "80":48,
+}
+
 class FastorPrinterSdk extends EscPosEncoder {
-    constructor(connection_type, paperwidth) {
+    constructor(paperwidth,characterPerLine) {
         super();
         this.printer = new WebUSB();
-        this.width = paperwidth || 48;
+        paperwidth = paperwidth || "32";
+        this.width = characterPerLine || predefinedPrinters[paperwidth]
     }
     async initialize() {
         super.initialize();
