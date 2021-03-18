@@ -24,7 +24,7 @@ class FastorPrinterSdk extends EscPosEncoder {
     }
 
     table(leftText, rightText) {
-        const space = this.width - (leftText.length + rightText.length);
+        space = this.width - (leftText.length + rightText.length);
         space = space > 0 ? space : 0
         super.line(leftText + Array(space).fill(" ").join("") + rightText);
         return this
