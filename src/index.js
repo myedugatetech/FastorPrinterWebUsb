@@ -29,7 +29,7 @@ class FastorPrinterSdk extends EscPosEncoder {
     }
 
     table(leftText, rightText) {
-        let space = this.width - (leftText.length + rightText.length);
+        let space = this.width - (leftText.length + (rightText+"").length);
         space = space > 0 ? space : 0
         return super.line(leftText + Array(space).fill(" ").join("") + rightText);
     }
