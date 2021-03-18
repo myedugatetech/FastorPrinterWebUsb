@@ -1,20 +1,7 @@
 const WebUSB = require('./webusb');
 const EscPosEncoder = require('esc-pos-encoder');
 
-let connection_types = {
-    USB: "USB"
-}
-
-
 class FastorPrinterSdk extends EscPosEncoder {
-    static CONNECTION_TYPE = connection_types
-
-    static TEXT_ALIGN = {
-        CENTER_ALIGNMENT: "center",
-        LEFT_ALIGNMENT: "left",
-        RIGHT_ALIGNMENT: "right",
-    }
-
     constructor(connection_type, paperwidth) {
         super();
         this.printer = new WebUSB();
@@ -42,7 +29,7 @@ class FastorPrinterSdk extends EscPosEncoder {
         super.line(leftText + Array(space).fill(" ").join("") + rightText);
         return this
     }
-    
+
     close() {
         return this.printer.close()
     }
