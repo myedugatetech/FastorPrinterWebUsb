@@ -10,7 +10,7 @@ class FastorPrinterSdk extends EscPosEncoder {
     constructor(paperwidth,characterPerLine) {
         super();
         this.printer = new WebUSB();
-        paperwidth = paperwidth || "32";
+        paperwidth = paperwidth || "58";
         this.width = characterPerLine || predefinedPrinters[paperwidth]
     }
     async initialize() {
