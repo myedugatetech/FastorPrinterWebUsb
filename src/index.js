@@ -7,7 +7,7 @@ let connection_types = {
 
 
 class FastorPrinterSdk extends EscPosEncoder {
-    static CONNECTION_TYPE = connection_type
+    static CONNECTION_TYPE = connection_types
 
     static TEXT_ALIGN = {
         CENTER_ALIGNMENT: "center",
