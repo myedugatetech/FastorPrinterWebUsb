@@ -11,7 +11,7 @@ class WebUSB {
     }
 
     async selectPrinter() {
-        let devices = await navigator.usb.getDevices()
+        let devices = await navigator.usb.getDevices({filters:[{ classCode: 0x07 }]})
         if (devices && devices.length > 0)
             this.device = devices[0]
 

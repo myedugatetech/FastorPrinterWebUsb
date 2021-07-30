@@ -26,27 +26,28 @@ class FastorPrinterSdk {
 				return this;
 		}
 
-		line(text){
-				this.data += `<p class="${this.nextTextAlignment||"left"+"-align line"}">${text}</p>`;
+		line(text=""){
+				this.data += `<p class="${(this.nextTextAlignment||"left")+"-align line"}">${text}</p>`;
 				return this;
 		}
 
-		text(text){
-				this.data += `<p class="${this.nextTextAlignment||"left"+"-align text"}">${text}</p>`;
+		text(text=""){
+				this.data += `<p class="${(this.nextTextAlignment||"left")+"-align text"}">${text}</p>`;
 				return this;
 		}
 
     table(leftText, rightText) {
-			let space = this.width - (leftText.length + (rightText+"").length);
-			space = space > 0 ? space : 0
-			this.line(leftText + Array(space).fill(" ").join("") + rightText);
+			this.data += `<div class="table"><div>${leftText}</div><div>${rightText}</div></div>`;
 			return this;
     }
 
     async print() {
-				let win = window.open("","", "width=100,height=800")
-				win.document.write(template(this.data)); 
-				win.print();
+				let win = window.open("","","height=800,width=500")
+				setTimeout(()=>{
+					win.document.write(template(this.data)); 
+					win.print();
+					win.close();
+				},500)
     }
 
     close() {
@@ -55,5 +56,6 @@ class FastorPrinterSdk {
 }
 
 module.exports = FastorPrinterSdk;
+
 
 

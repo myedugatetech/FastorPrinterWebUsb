@@ -10,14 +10,11 @@ let predefinedPrinters = {
 class FastorPrinterSdk extends EscPosEncoder {
     constructor(paperwidth,characterPerLine) {
         super();
-				this.legacy = legacy;
-				if(legacy) this.printer = new LegacyPrint();
-				else this.printer = new WebUSB();
+				this.printer = new WebUSB();
         paperwidth = paperwidth || "58" ;
         this.width = characterPerLine || predefinedPrinters[paperwidth]
     }
     async initialize() {
-				if(this.legacy) return;
         super.initialize();
         await this.printer.selectPrinter();
     }
